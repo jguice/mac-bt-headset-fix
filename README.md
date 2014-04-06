@@ -46,7 +46,7 @@ To quit (kill) the app type:  `kill [pid]`  where pid is the number from the pre
 
 Then you can run the ps command again to verify it's no longer running.
 
- **Note** *this won't restart the Remote Control Daemon (either restart your system or look at the command in the code and replace unload with load to do that)*
+ **Note** *on quit the application will try to reload the Remote Control Daemon to restore whatever functionality it provides*
 
 
 ## TODO
