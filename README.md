@@ -26,7 +26,7 @@ On launch it will also attend to unload the built-in Remote Control Daemon (rcd)
 If you find iTunes still loads you might try this [play-button-itunes-patch](http://github.com/thebitguru/play-button-itunes-patch).
 
 ## Usage
-Download the Spotify Bluetooth Headset Listener.zip file and unzip it.
+Download the [Spotify Bluetooth Headset Listener.zip](http://github.com/jguice/mac-bt-headset-fix/raw/master/Spotify%20Bluetooth%20Headset%20Listener.zip) file and unzip it.
 
 Double-click to run the app (you may need to generally allow unsigned apps or authorize this one in particular).
 
