@@ -48,13 +48,6 @@ Then you can run the ps command again to verify it's no longer running.
 
  **Note** *on quit the application will try to reload the Remote Control Daemon to restore whatever functionality it provides*
 
-
-## TODO
-- instead of sending event directly to spotify, resend as keyboard media key event (which seems to work for many apps when bluetooth controls do not and will not disable iTunes events)
-- if a general solution isn't possible, add support for other applications and a way to choose
-- update the generic application icon
-- provide a non-terminal way to quit the app (maybe a menu bar icon)
-
 ## Donations
 Feel free to <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=DT8G2EJMXLPLC">donate any amount</a> If you'd like to contribute to further development of this little app or just say "Thanks!"
 
