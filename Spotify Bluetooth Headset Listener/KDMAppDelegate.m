@@ -28,7 +28,8 @@
 		if(keyCode == 10 && keyFlags == 6972) {
 			SpotifyApplication * spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
 			switch ([event data2]) {
-				case 786608: // Play / Pause
+				case 786608: // Play / Pause on OS < 10.10 Yosemite
+                case 786637: // Play / Pause on OS >= 10.10 Yosemite
 					if([spotify playerState] == SpotifyEPlSPaused)
 						[spotify play];
 					else
