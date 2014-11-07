@@ -13,10 +13,17 @@
 @property id eventMonitor;
 @end
 
-@implementation KDMAppDelegate
+@implementation KDMAppDelegate {
+	NSStatusItem * statusItem;
+	IBOutlet NSMenu * statusItemMenu;
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	if(![[NSUserDefaults standardUserDefaults] boolForKey:@"Hide menu Item"]){
+		[self setupMenuItem];
+	}
+
 	[NSTask launchedTaskWithLaunchPath:@"/bin/launchctl" arguments:@[@"unload",@"/System/Library/LaunchAgents/com.apple.rcd.plist"]];
 	self.eventMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask|NSSystemDefinedMask)  handler:^(NSEvent * event) {
 		int keyCode = (([event data1] & 0xFFFF0000) >> 16);
@@ -51,8 +58,36 @@
 	return;
 }
 
+- (void) setupMenuItem {
+	if(statusItem == nil) {
+		statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+		statusItem.image = [NSImage imageNamed:@"MenuItemTemplate"];
+		statusItem.menu = statusItemMenu;
+	}
+}
+
 - (void) applicationWillTerminate:(NSNotification *)notification {
 	[NSTask launchedTaskWithLaunchPath:@"/bin/launchctl" arguments:@[@"load",@"/System/Library/LaunchAgents/com.apple.rcd.plist"]];
 	[NSEvent removeMonitor:self.eventMonitor];
+}
+
+- (IBAction)hide:(id)sender {
+	NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	if([standardUserDefaults boolForKey:@"Hide menu Item"]) {
+		[standardUserDefaults setBool:NO forKey:@"Hide menu Item"];
+		[self setupMenuItem];
+	}
+	else {
+		[standardUserDefaults setBool:YES forKey:@"Hide menu Item"];
+		[statusItem.statusBar removeStatusItem:statusItem];
+		statusItem = nil;
+	}
+}
+- (BOOL) validateMenuItem:(NSMenuItem *)menuItem {
+	if([menuItem action] == @selector(hide:)) {
+		[menuItem setState:[[NSUserDefaults standardUserDefaults] boolForKey:@"Hide menu Item"]?NSOnState:NSOffState];
+		return YES;
+	}
+	return NO;
 }
 @end
