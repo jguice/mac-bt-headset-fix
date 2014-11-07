@@ -58,19 +58,6 @@
 	return;
 }
 
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
-	if(statusItem == nil) {
-		[self setupMenuItem];
-		[statusItem popUpStatusItemMenu:statusItem.menu];
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			if([[NSUserDefaults standardUserDefaults] boolForKey:@"Hide menu Item"]){
-				[statusItem.statusBar removeStatusItem:statusItem];
-			}
-		});
-	}
-	return NO;
-}
-
 - (void) setupMenuItem {
 	if(statusItem == nil) {
 		statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
