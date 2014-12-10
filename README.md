@@ -1,7 +1,7 @@
 mac-bt-headset-fix
 ==================
 
-Small mac application that fixes broken bluetooth headset control by listening for events and sending them directly to apps
+Small mac application that fixes broken bluetooth headset control by listening for events and sending them directly to apps.
 
 ## Origin
 This little app was originally posted on [this spotify community thread](http://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/Bluetooth-headset-buttons/m-p/161796).
