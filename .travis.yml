@@ -9,3 +9,4 @@ addons:
     bucket: jguice
     local-dir: dist
     upload-dir: mac-bt-headset-fix
+    skip_cleanup: true
