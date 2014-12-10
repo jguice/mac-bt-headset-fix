@@ -1,1 +1,10 @@
 language: objective-c
+addons:
+  artifacts:
+    key:
+      secure: gB/EKRMvGDDSyS1cRqCFm3qzAUmKy5mfV77HyvqI6yyJZSSYzNAEZuavL8oUPmAyzqEhuIhDtDT3Fnpa0V1eb0IdcAa2llWyvhiL2nZ5WArEgIO0EAthq1NxuZ5/TPILwhUeRPGnvxzQ7enLCXJqn5fdE5+u9YN2vL0AQp5/C8A=
+    secret:
+      secure: UHkOeeWzMc5tBC87IhYFG4nez94+JiSt5K4mqPausqTdEY7pcSjNkBdmiJvP1/nRJLgMpYzGJfDaLslG+BfIfpviT4SMokTXY0Od9JPvbgXM3bP3ps7aH38pNEm+K+N1KRfFW1b77ti/pmy39OotBrNIh4+kiVNotV9CsaZN11c=
+    bucket: jguice
+    upload-dir: mac-bt-headset-fix
+    
