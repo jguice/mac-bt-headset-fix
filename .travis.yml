@@ -1,5 +1,5 @@
 language: objective-c
-script: build.sh
+script: ./build.sh
 addons:
   artifacts:
     key:
