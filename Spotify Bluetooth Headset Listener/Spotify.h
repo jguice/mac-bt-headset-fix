@@ -15,6 +15,27 @@ enum SpotifyEPlS {
 };
 typedef enum SpotifyEPlS SpotifyEPlS;
 
+enum VoxEPlS {
+    VoxEPlSPlaying = 1,
+    VoxEPlSPaused = 0
+};
+typedef enum VoxEPlS VoxEPlS;
+
+/*
+ * Vox Suite
+ */
+// The Vox application.
+@interface VoxApplication : SBApplication
+
+@property (readonly) VoxEPlS playerState;  // Is Vox stopped, paused, or playing?
+
+- (void) next;  // Skip to the next track.
+- (void) previous;  // Skip to the previous track.
+- (void) playpause;  // Toggle play/pause.
+- (void) pause;  // Pause playback.
+- (void) play;  // Resume playback.
+
+@end
 
 
 /*
