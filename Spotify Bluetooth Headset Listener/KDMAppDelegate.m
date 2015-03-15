@@ -34,24 +34,53 @@
 		
 		if(keyCode == 10 && keyFlags == 6972) {
 			SpotifyApplication * spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
-			switch ([event data2]) {
-				case 786608: // Play / Pause on OS < 10.10 Yosemite
-                case 786637: // Play / Pause on OS >= 10.10 Yosemite
-					if([spotify playerState] == SpotifyEPlSPaused)
-						[spotify play];
-					else
-						[spotify pause];
-					break;
-				case 786613: // Next
-					[spotify nextTrack];
-					break;
-				case 786614: // Previous
-					[spotify previousTrack];
-					break;
-				default:
-					NSLog(@"keyCode:%i keyFlags:%i keyState:%i %li",keyCode,keyFlags,keyState,(long)[event data2]);
-					break;
-			}
+            VoxApplication * vox = [SBApplication applicationWithBundleIdentifier:@"com.coppertino.Vox"];
+            if ([spotify isRunning]) {
+                switch ([event data2]) {
+                    case 786608: // Play / Pause on OS < 10.10 Yosemite
+                    case 786637: // Play / Pause on OS >= 10.10 Yosemite
+                        if([spotify playerState] == SpotifyEPlSPaused)
+                            [spotify play];
+                        else
+                            [spotify pause];
+                        break;
+                    case 786613: // Next
+                        [spotify nextTrack];
+                        break;
+                    case 786614: // Previous
+                        [spotify previousTrack];
+                        break;
+                    default:
+                        NSLog(@"keyCode:%i keyFlags:%i keyState:%i %li",keyCode,keyFlags,keyState,(long)[event data2]);
+                        break;
+                }
+            } else if ([vox isRunning]) {
+                switch ([event data2]) {
+                    case 786608: // Play / Pause on OS < 10.10 Yosemite
+                    case 786637: // Play / Pause on OS >= 10.10 Yosemite
+                        if([vox playerState] == VoxEPlSPaused)
+                            [vox play];
+                        else
+                            [vox pause];
+                        break;
+                    case 786613: // Next
+                        [vox next];
+                        break;
+                    case 786614: // Previous
+                        [vox previous];
+                        break;
+                    default:
+                        NSLog(@"keyCode:%i keyFlags:%i keyState:%i %li",keyCode,keyFlags,keyState,(long)[event data2]);
+                        break;
+                }
+            } else {
+                switch ([event data2]) {
+                    case 786608: // Play / Pause on OS < 10.10 Yosemite
+                    case 786637: // Play / Pause on OS >= 10.10 Yosemite
+                        [vox activate];
+                        break;
+                }
+            }
 			
 		}
 	}];

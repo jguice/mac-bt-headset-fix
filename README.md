@@ -58,4 +58,3 @@ Then you can run the ps command again to verify it's no longer running.
 
 ## Donations
 Feel free to <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=DT8G2EJMXLPLC">donate any amount</a> If you'd like to contribute to further development of this little app or just say "Thanks!"
-
