@@ -3,7 +3,11 @@ mac-bt-headset-fix <img src='https://travis-ci.org/jguice/mac-bt-headset-fix.svg
 
 Small mac application that fixes broken bluetooth headset control by listening for events and sending them directly to apps.
 
-Download the [latest version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix/Spotify+Bluetooth+Headset+Listener.zip).
+Download the [latest stable version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix/Spotify+Bluetooth+Headset+Listener.zip).
+
+If you're feeling lucky try the [beta version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix-beta/Spotify+Bluetooth+Headset+Listener.zip).
+
+The current beta fires media key events and should work with any application that responds to the keyboard play/pause, next, etc. keys. :)
 
 ## Origin
 This little app was originally posted on [this spotify community thread](http://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/Bluetooth-headset-buttons/m-p/161796).
