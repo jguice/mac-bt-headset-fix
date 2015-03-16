@@ -15,3 +15,5 @@ deploy:
   local-dir: dist
   upload-dir: mac-bt-headset-fix-beta
   skip_cleanup: true
+  on:
+    all_branches: true
