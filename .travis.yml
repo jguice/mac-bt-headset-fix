@@ -1,7 +1,9 @@
 language: objective-c
 script: "./build.sh"
-on:
-  branch: media-keys
+branches:
+  only:
+    - master
+    - media-keys
 deploy:
   provider: s3
   access_key_id:
