@@ -1,5 +1,7 @@
 language: objective-c
 script: "./build.sh"
+on:
+  branch: media-keys
 deploy:
   provider: s3
   access_key_id:
@@ -9,5 +11,5 @@ deploy:
   bucket: jguice
   acl: public_read
   local-dir: dist
-  upload-dir: mac-bt-headset-fix
+  upload-dir: mac-bt-headset-fix-beta
   skip_cleanup: true
