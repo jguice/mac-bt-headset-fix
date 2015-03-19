@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 KDM Software. All rights reserved.
 //
 
+// TODO rename this app to MacBluetoothHeadsetListener (or something even *more* catchy ;) )
+
 #import "KDMAppDelegate.h"
-#import "Spotify.h"
+#import "MediaKey.h"
 
 @interface KDMAppDelegate()
 @property id eventMonitor;
@@ -24,6 +26,7 @@
 		[self setupMenuItem];
 	}
 
+    // TODO determine why there is sometimes a several second delay before this monitor fires (is there another way that might be faster?)
 	[NSTask launchedTaskWithLaunchPath:@"/bin/launchctl" arguments:@[@"unload",@"/System/Library/LaunchAgents/com.apple.rcd.plist"]];
 	self.eventMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:(NSKeyDownMask|NSSystemDefinedMask)  handler:^(NSEvent * event) {
 		int keyCode = (([event data1] & 0xFFFF0000) >> 16);
@@ -33,55 +36,34 @@
         int keyState = (((keyFlags & 0xFF00) >> 8)) == 0xA;
 		
 		if(keyCode == 10 && keyFlags == 6972) {
-			SpotifyApplication * spotify = [SBApplication applicationWithBundleIdentifier:@"com.spotify.client"];
-            VoxApplication * vox = [SBApplication applicationWithBundleIdentifier:@"com.coppertino.Vox"];
-            if ([spotify isRunning]) {
-                switch ([event data2]) {
-                    case 786608: // Play / Pause on OS < 10.10 Yosemite
-                    case 786637: // Play / Pause on OS >= 10.10 Yosemite
-                        if([spotify playerState] == SpotifyEPlSPaused)
-                            [spotify play];
-                        else
-                            [spotify pause];
-                        break;
-                    case 786613: // Next
-                        [spotify nextTrack];
-                        break;
-                    case 786614: // Previous
-                        [spotify previousTrack];
-                        break;
-                    default:
-                        NSLog(@"keyCode:%i keyFlags:%i keyState:%i %li",keyCode,keyFlags,keyState,(long)[event data2]);
-                        break;
-                }
-            } else if ([vox isRunning]) {
-                switch ([event data2]) {
-                    case 786608: // Play / Pause on OS < 10.10 Yosemite
-                    case 786637: // Play / Pause on OS >= 10.10 Yosemite
-                        if([vox playerState] == VoxEPlSPaused)
-                            [vox play];
-                        else
-                            [vox pause];
-                        break;
-                    case 786613: // Next
-                        [vox next];
-                        break;
-                    case 786614: // Previous
-                        [vox previous];
-                        break;
-                    default:
-                        NSLog(@"keyCode:%i keyFlags:%i keyState:%i %li",keyCode,keyFlags,keyState,(long)[event data2]);
-                        break;
-                }
-            } else {
-                switch ([event data2]) {
-                    case 786608: // Play / Pause on OS < 10.10 Yosemite
-                    case 786637: // Play / Pause on OS >= 10.10 Yosemite
-                        [vox activate];
-                        break;
-                }
-            }
-			
+            
+            switch ([event data2]) {
+                case 786608: // Play / Pause on OS < 10.10 Yosemite
+                case 786637: // Play / Pause on OS >= 10.10 Yosemite
+                    NSLog(@"Play/Pause bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_PLAY];
+                    break;
+                case 786611: // Fast-Forward
+                    NSLog(@"Fast-Forward bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_FAST];
+                    break;
+                case 786612: // Rewind
+                    NSLog(@"Rewind bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_REWIND];
+                    break;
+                case 786613: // Next
+                    NSLog(@"Next bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_NEXT];
+                    break;
+                case 786614: // Previous
+                    NSLog(@"Previous bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_PREVIOUS];
+                    break;
+                default:
+                    // TODO make this popup a message in the UI (with a link to submit the issue and a "don't show this message again" checkbox)
+                    NSLog(@"Unknown bluetooth key received.  Please visit https://github.com/jguice/mac-bt-headset-fix/issues and submit an issue describing what you expect the key to do (include the following data): keyCode:%i keyFlags:%i keyState:%i %li",keyCode,keyFlags,keyState,(long)[event data2]);
+                    break;
+            }			
 		}
 	}];
 	return;
