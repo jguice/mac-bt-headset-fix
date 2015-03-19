@@ -1,29 +1,29 @@
 mac-bt-headset-fix <img src='https://travis-ci.org/jguice/mac-bt-headset-fix.svg?branch=master' alt='build status'/>
 ==================
 
-Small mac application that fixes broken bluetooth headset control by listening for events and sending them directly to apps.
+Small mac application that fixes broken bluetooth headset control by listening for headset keypress events and re-triggers them as media key presses (as if one pushed the buttons on the keyboard).
+
+The app should work with any player/etc. that responds to media keys, but allow you to use your bluetooth headset controls instead :-).
 
 Download the [latest stable version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix/Spotify+Bluetooth+Headset+Listener.zip).
 
-If you're feeling lucky try the [beta version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix-beta/Spotify+Bluetooth+Headset+Listener.zip).
+## Usage
+Download the above file and unzip it.  Double-click to run the app (you may need to generally allow unsigned apps or authorize this one in particular).
 
-The current beta fires media key events and should work with any application that responds to the keyboard play/pause, next, etc. keys. :)
-
-## Origin
-This little app was originally posted on [this spotify community thread](http://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/Bluetooth-headset-buttons/m-p/161796).
-
-I did not write it, but was granted permission to post it to github for sharing and encouraging enhancements.
-
-It is published here under the [MIT License](http://opensource.org/licenses/MIT) as requested by the author. :)
+Try connecting your bluetooth device and using the play/pause/etc. buttons.  Your media player should respond to them just as if you'd pressed the relevant keyboard media key. :)
 
 ## What it does
-On execution the application will background itself and listen for bluetooth headset events.
+On execution the application will background itself and listen for bluetooth headset events.  You'll see a **menu bar icon** that can be used to quit the app (or hide the menu icon).  **Note** *that the menu icon will remain visible for 30 seconds before hiding to allow changing the hide option or quitting, etc.*
 
-Currently it responds to play/pause and next/previous.
+The app will intercept common bluetooth headset key presses and re-fire them as media key presses.  Currently the following key presses are supported:
 
-It will translate those events into spotify actions (and thus requires the [spotify player](http://www.spotify.com/download) to be installed).
+- play/pause
+- next
+- prev
+- fast-forward
+- rewind
 
-**Note** *that events will likely no longer work with iTunes.*
+The mapping on headsets seems to be a bit inconsistent.  If pressing next/prev doesn't work, try a press and hold. :)
 
 On launch it will also attempt to unload the built-in Remote Control Daemon (rcd) which seems to be responsible for starting iTunes when a play event is first received.
 
@@ -31,21 +31,8 @@ On launch it will also attempt to unload the built-in Remote Control Daemon (rcd
 
 If you find iTunes still loads you might try this [play-button-itunes-patch](http://github.com/thebitguru/play-button-itunes-patch).
 
-## Usage
-Download the [Spotify Bluetooth Headset Listener.zip](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix/Spotify+Bluetooth+Headset+Listener.zip) file and unzip it.
-
-Double-click to run the app (you may need to generally allow unsigned apps or authorize this one in particular).
-
-Try connecting your bluetooth device and using the play/pause/etc. buttons.  Spotify should respond to them.  :)
-
-## Menu Bar
-By default the app will show a menu bar icon that can be used to exit the application.  If you choose the "Hide" option
-then you'll have to follow the "Quitting the Application" steps below to kill it.
-
-Note that on restart the menu bar will show for 30 seconds even if it's set to be hidden (in case you change your mind).
-
-## Quitting the Application
-You can quit the application via the menu bar icon.  If you hidden the menu bar item then  you'll need to open the terminal and kill the process.  Try this:
+## Quitting the Application when menu bar icon is hidden
+If you've hidden the menu bar item then  you'll need to open the terminal and kill the process.  Try this:
 
 - open the Terminal application (search spotlight or look in /Applications/Utilities)
 - `ps ux | grep Bluetooth`
@@ -54,11 +41,25 @@ Look for a line that references **/Applications/Spotify Bluetooth Headset Listen
 
 The number right after your username is the process id.
 
-To quit (kill) the app type:  `kill [pid]`  where pid is the number from the previous step.
+To quit (kill) the app type:  `kill [pid]`  where [pid] is the number from the previous step.
 
 Then you can run the ps command again to verify it's no longer running.
 
  **Note** *on quit the application will try to reload the Remote Control Daemon to restore whatever functionality it provides*
+
+## Beta Version
+
+If you're feeling lucky try the [beta version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix-beta/Spotify+Bluetooth+Headset+Listener.zip).
+
+### Changes
+- current beta is identical to the release version
+
+## Origin
+The original version of this app was posted on [this spotify community thread](http://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/Bluetooth-headset-buttons/m-p/161796).  It controlled the spotify mac player directly via the scripting bridge (objC -> applescript).
+
+I did not write it, but was granted permission to post it to github for sharing and encouraging enhancements.  It was published here under the [MIT License](http://opensource.org/licenses/MIT) as requested by the author. :)
+
+This current version also retains that same license.
 
 ## Alternatives
  - https://github.com/JamesFator/BTHSControl
