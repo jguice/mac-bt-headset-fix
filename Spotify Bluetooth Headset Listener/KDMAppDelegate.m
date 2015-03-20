@@ -43,21 +43,21 @@
                     NSLog(@"Play/Pause bluetooth keypress detected...sending corresponding media key event");
                     [MediaKey send:NX_KEYTYPE_PLAY];
                     break;
-                case 786611: // Fast-Forward
-                    NSLog(@"Fast-Forward bluetooth keypress detected...sending corresponding media key event");
-                    [MediaKey send:NX_KEYTYPE_FAST];
-                    break;
-                case 786612: // Rewind
-                    NSLog(@"Rewind bluetooth keypress detected...sending corresponding media key event");
-                    [MediaKey send:NX_KEYTYPE_REWIND];
-                    break;
-                case 786613: // Next
+                case 786611: // Next
                     NSLog(@"Next bluetooth keypress detected...sending corresponding media key event");
                     [MediaKey send:NX_KEYTYPE_NEXT];
                     break;
-                case 786614: // Previous
+                case 786612: // Previous
                     NSLog(@"Previous bluetooth keypress detected...sending corresponding media key event");
                     [MediaKey send:NX_KEYTYPE_PREVIOUS];
+                    break;
+                case 786613: // Fast-forward
+                    NSLog(@"Fast-forward bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_FAST];
+                    break;
+                case 786614: // Rewind
+                    NSLog(@"Rewind bluetooth keypress detected...sending corresponding media key event");
+                    [MediaKey send:NX_KEYTYPE_REWIND];
                     break;
                 default:
                     // TODO make this popup a message in the UI (with a link to submit the issue and a "don't show this message again" checkbox)

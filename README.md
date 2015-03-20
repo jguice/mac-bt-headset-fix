@@ -10,7 +10,7 @@ Download the [latest stable version](https://s3-us-west-2.amazonaws.com/jguice/m
 ## Usage
 Download the above file and unzip it.  Double-click to run the app (you may need to generally allow unsigned apps or authorize this one in particular).
 
-Try connecting your bluetooth device and using the play/pause/etc. buttons.  Your media player should respond to them just as if you'd pressed the relevant keyboard media key. :)
+Try connecting your bluetooth device and pressing the play/pause/etc. buttons (press and hold too).  Your media player should respond to them just as if you'd pressed the relevant keyboard media key. :)
 
 ## What it does
 On execution the application will background itself and listen for bluetooth headset events.  You'll see a **menu bar icon** that can be used to quit the app (or hide the menu icon).  **Note** *that the menu icon will remain visible for 30 seconds before hiding to allow changing the hide option or quitting, etc.*
