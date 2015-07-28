@@ -12,6 +12,8 @@ Download the above file and unzip it.  Double-click to run the app (you may need
 
 Try connecting your bluetooth device and pressing the play/pause/etc. buttons (press and hold too).  Your media player should respond to them just as if you'd pressed the relevant keyboard media key. :)
 
+If you're using an in-browser player you might need an extension to make the app respond to media keys (which should also make it work with your headset).  For **chrome** try [streamkeys](https://chrome.google.com/webstore/detail/streamkeys/ekpipjofdicppbepocohdlgenahaneen?hl=en).
+
 ## What it does
 On execution the application will background itself and listen for bluetooth headset events.  You'll see a **menu bar icon** that can be used to quit the app (or hide the menu icon).  **Note** *that the menu icon will remain visible for 30 seconds before hiding to allow changing the hide option or quitting, etc.*
 
