@@ -34,20 +34,17 @@ On launch it will also attempt to unload the built-in Remote Control Daemon (rcd
 If you find iTunes still loads you might try this [play-button-itunes-patch](http://github.com/thebitguru/play-button-itunes-patch).
 
 ## Quitting the Application when menu bar icon is hidden
-If you've hidden the menu bar item then  you'll need to open the terminal and kill the process.  Try this:
+Run this command in Terminal:
 
-- open the Terminal application (search spotlight or look in /Applications/Utilities)
-- `ps ux | grep Bluetooth`
+    kill "$(pgrep 'Spotify Bluetooth Headset Listener')"
 
-Look for a line that references **/Applications/Spotify Bluetooth Headset Listener.app** and starts with your username.
+If you want to relaunch the app (possibly to show the icon again), run this instead:
 
-The number right after your username is the process id.
+    PID="$(pgrep 'Spotify Bluetooth Headset Listener')"; APP="$(dirname "$(ps -o "comm" -p "$PID" | tail -n 1)")/../../"; kill $PID; open "$APP"
 
-To quit (kill) the app type:  `kill [pid]`  where [pid] is the number from the previous step.
+You will have 30 seconds to disable hiding the icon if you so choose.
 
-Then you can run the ps command again to verify it's no longer running.
-
- **Note** *on quit the application will try to reload the Remote Control Daemon to restore whatever functionality it provides*
+ **Note**: *on quit the application will try to reload the Remote Control Daemon to restore whatever functionality it provides*
 
 ## Beta Version
 
