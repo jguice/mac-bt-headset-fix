@@ -1,4 +1,4 @@
-mac-bt-headset-fix <img src='https://travis-ci.org/jguice/mac-bt-headset-fix.svg?branch=master' alt='build status'/>
+mac-bt-headset-fix <a href='https://travis-ci.org/jguice/mac-bt-headset-fix'><img src='https://travis-ci.org/jguice/mac-bt-headset-fix.svg?branch=master' alt='build status'/></a>
 ==================
 
 Small mac application that fixes broken bluetooth headset control by listening for headset keypress events and re-triggers them as media key presses (as if one pushed the buttons on the keyboard).
