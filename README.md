@@ -41,8 +41,9 @@ Run this command in Terminal:
 If you want to relaunch the app (possibly to show the icon again), run this instead:
 
     PID="$(pgrep 'Spotify Bluetooth Headset Listener')"; \
-    APP="$(dirname "$(ps -o "comm" -p "$PID" | \
-    tail -n 1)")/../../"; kill $PID; open "$APP"
+    APP="$(dirname "$(ps -o "comm" -p "$PID" | tail -n 1)")/../../"; \
+    kill $PID; \
+    open "$APP"
 
 You will have 30 seconds to disable hiding the icon if you so choose.
 
