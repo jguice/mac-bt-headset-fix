@@ -6,6 +6,7 @@ branches:
     - media-keys
 deploy:
   provider: s3
+  region: us-west-2
   access_key_id:
     secure: gB/EKRMvGDDSyS1cRqCFm3qzAUmKy5mfV77HyvqI6yyJZSSYzNAEZuavL8oUPmAyzqEhuIhDtDT3Fnpa0V1eb0IdcAa2llWyvhiL2nZ5WArEgIO0EAthq1NxuZ5/TPILwhUeRPGnvxzQ7enLCXJqn5fdE5+u9YN2vL0AQp5/C8A=
   secret_access_key:
