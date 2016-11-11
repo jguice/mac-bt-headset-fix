@@ -13,6 +13,7 @@
 		03143FAD1DD56BEB007A6D78 /* buboTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03143FAC1DD56BEB007A6D78 /* buboTests.swift */; };
 		03143FB81DD56BEB007A6D78 /* buboUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03143FB71DD56BEB007A6D78 /* buboUITests.swift */; };
 		03143FC61DD57348007A6D78 /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03143FC51DD57348007A6D78 /* StatusMenuController.swift */; };
+		03143FC81DD582DE007A6D78 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = 03143FC71DD582DE007A6D78 /* build.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		03143FB71DD56BEB007A6D78 /* buboUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = buboUITests.swift; sourceTree = "<group>"; };
 		03143FB91DD56BEB007A6D78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03143FC51DD57348007A6D78 /* StatusMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
+		03143FC71DD582DE007A6D78 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				03143F9C1DD56BEB007A6D78 /* AppDelegate.swift */,
+				03143FC71DD582DE007A6D78 /* build.sh */,
 				03143F9E1DD56BEB007A6D78 /* Assets.xcassets */,
 				03143FC51DD57348007A6D78 /* StatusMenuController.swift */,
 				03143FA01DD56BEB007A6D78 /* MainMenu.xib */,
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03143FC81DD582DE007A6D78 /* build.sh in Resources */,
 				03143F9F1DD56BEB007A6D78 /* Assets.xcassets in Resources */,
 				03143FA21DD56BEB007A6D78 /* MainMenu.xib in Resources */,
 			);
@@ -505,6 +509,7 @@
 				03143FBE1DD56BEB007A6D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03143FBF1DD56BEB007A6D78 /* Build configuration list for PBXNativeTarget "buboTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +518,7 @@
 				03143FC11DD56BEB007A6D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		03143FC21DD56BEB007A6D78 /* Build configuration list for PBXNativeTarget "buboUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +527,7 @@
 				03143FC41DD56BEB007A6D78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
