@@ -1,11 +1,11 @@
 #!/bin/bash
 
-xcodebuild -project Spotify\ Bluetooth\ Headset\ Listener.xcodeproj
+xcodebuild -project bubo.xcodeproj
 
 mkdir dist
 
 cd build/Release
 
-zip -r Spotify\ Bluetooth\ Headset\ Listener.zip Spotify\ Bluetooth\ Headset\ Listener.app
+zip -r bubo.zip bubo.app
 
-mv Spotify\ Bluetooth\ Headset\ Listener.zip ../../dist
+mv bubo.zip ../../dist
