@@ -1,4 +1,5 @@
-language: objective-c
+language: swift
+osx_image: xcode8
 script: "./build.sh"
 branches:
   only:
