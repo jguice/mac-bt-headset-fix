@@ -3,7 +3,7 @@ script: "./build.sh"
 branches:
   only:
     - master
-    - media-keys
+    - sierra
 deploy:
   provider: s3
   region: us-west-2
