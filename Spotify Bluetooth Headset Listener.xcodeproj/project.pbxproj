@@ -402,7 +402,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spotify Bluetooth Headset Listener/Spotify Bluetooth Headset Listener-Prefix.pch";
 				INFOPLIST_FILE = "Spotify Bluetooth Headset Listener/Spotify Bluetooth Headset Listener-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -416,7 +416,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Spotify Bluetooth Headset Listener/Spotify Bluetooth Headset Listener-Prefix.pch";
 				INFOPLIST_FILE = "Spotify Bluetooth Headset Listener/Spotify Bluetooth Headset Listener-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
