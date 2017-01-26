@@ -10,10 +10,16 @@ import Cocoa
 
 import MediaPlayer
 
-@available(OSX 10.12.1, *)
+@available(OSX 10.12.2, *)
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    
+
+    struct Constants {
+        static let bannedAppBundleIds = [
+            "com.spotify.client"
+        ]
+    }
+
     // hidsystem/ev_keymap.h
     let NX_KEYTYPE_SOUND_UP   = 0
     let NX_KEYTYPE_SOUND_DOWN = 1
@@ -47,7 +53,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
     }
-    
+
+    func isBannedAppRunning() -> Bool {
+        let runningApps = NSWorkspace.shared().runningApplications
+        let runningBundleIds = runningApps.flatMap({ $0.bundleIdentifier })
+        return !Set(runningBundleIds).isDisjoint(with: Constants.bannedAppBundleIds)
+    }
+
     func doKey(key: Int, down: Bool) {
         let flags = NSEventModifierFlags(rawValue: down ? 0xa00 : 0xb00)
         let data1 = (key << 16) | ((down ? 0xa : 0xb) << 8)
@@ -70,6 +82,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
     func handlePlayPauseCommandEvent(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        guard !isBannedAppRunning() else { return .noActionableNowPlayingItem }
+
         doKey(key: NX_KEYTYPE_PLAY, down: true)
         doKey(key: NX_KEYTYPE_PLAY, down: false)
         
@@ -77,6 +91,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func handleNextTrackCommandEvent(_ event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        guard !isBannedAppRunning() else { return .noActionableNowPlayingItem }
+
         doKey(key: NX_KEYTYPE_NEXT, down: true)
         doKey(key: NX_KEYTYPE_NEXT, down: false)
         
@@ -84,6 +100,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func handlePreviousTrackCommandEvent(event: MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus {
+        guard !isBannedAppRunning() else { return .noActionableNowPlayingItem }
+
         doKey(key: NX_KEYTYPE_PREVIOUS, down: true)
         doKey(key: NX_KEYTYPE_PREVIOUS, down: false)
         
@@ -91,12 +109,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func handleSeekForwardCommandEvent(event: MPSeekCommandEvent) -> MPRemoteCommandHandlerStatus {
+        guard !isBannedAppRunning() else { return .noActionableNowPlayingItem }
+
         doKey(key: NX_KEYTYPE_FAST, down: true)
         
         return .success
     }
     
     func handleSeekBackwardCommandEvent(event: MPSeekCommandEvent) -> MPRemoteCommandHandlerStatus {
+        guard !isBannedAppRunning() else { return .noActionableNowPlayingItem }
+
         doKey(key: NX_KEYTYPE_REWIND, down: true)
         
         return .success
