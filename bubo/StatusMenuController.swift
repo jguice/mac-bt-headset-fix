@@ -12,7 +12,10 @@ class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
     
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-    
+
+    struct Constants {
+        static let aboutUrl = URL(string: "https://github.com/jguice/mac-bt-headset-fix")!
+    }
     
     override func awakeFromNib() {
         let icon = NSImage(named: "statusIcon")
@@ -20,6 +23,10 @@ class StatusMenuController: NSObject {
         statusItem.image = icon
         
         statusItem.menu = statusMenu
+    }
+
+    @IBAction func aboutClicked(_ sender: NSMenuItem) {
+        NSWorkspace.shared().open(Constants.aboutUrl)
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {

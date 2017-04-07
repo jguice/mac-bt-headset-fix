@@ -10,7 +10,7 @@ import Cocoa
 
 import MediaPlayer
 
-@available(OSX 10.12.1, *)
+@available(OSX 10.12.2, *)
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
@@ -25,10 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     fileprivate let remoteCommandCenter = MPRemoteCommandCenter.shared()
     
-    @IBAction func quitClicked(_ sender: NSMenuItem) {
-        NSApplication.shared().terminate(self)
-    }
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         remoteCommandCenter.playCommand.addTarget(self, action: #selector(AppDelegate.handlePlayPauseCommandEvent(_:)))
         remoteCommandCenter.pauseCommand.addTarget(self, action: #selector(AppDelegate.handlePlayPauseCommandEvent(_:)))
