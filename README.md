@@ -9,6 +9,12 @@ The app should work with any player/etc. that responds to media keys, but allow 
 
 Download the [latest stable version](https://s3-us-west-2.amazonaws.com/jguice/mac-bt-headset-fix/Spotify+Bluetooth+Headset+Listener.zip).
 
+#### Install through `Homebrew`
+
+The "beta" version (above) can also be installed via [Homebrew (Cask)](https://brew.sh/) under the name "bubo":
+
+    `brew cask install bubo`
+
 ## Usage
 Download the above file and unzip it.  Double-click to run the app (you may need to generally allow unsigned apps or authorize this one in particular).
 
